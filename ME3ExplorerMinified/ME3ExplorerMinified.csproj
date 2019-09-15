@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CAD57930-F10E-4C22-9492-3C6879021507}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ME3ExplorerMinified</RootNamespace>
+    <AssemblyName>ME3ExplorerMinified</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Mathematics, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Mathematics.4.2.0\lib\net45\SharpDX.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Deconstructors.cs" />
+    <Compile Include="DLL.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Ini.cs" />
+    <Compile Include="ME1\HuffmanCompression.cs" />
+    <Compile Include="ME1\ITalkFile.cs" />
+    <Compile Include="ME1\Unreal\Classes\BioTlkFileSet.cs" />
+    <Compile Include="ME1\Unreal\Classes\TalkFile.cs" />
+    <Compile Include="ME1\Unreal\ME1UnrealObjectInfo.cs" />
+    <Compile Include="ME2\Unreal\ME2UnrealObjectInfo.cs" />
+    <Compile Include="MEDirectories\ME1Directory.cs" />
+    <Compile Include="MEDirectories\ME2Directory.cs" />
+    <Compile Include="MEDirectories\ME3Directory.cs" />
+    <Compile Include="MEDirectories\MEDirectories.cs" />
+    <Compile Include="MELoadedFiles.cs" />
+    <Compile Include="MountFile.cs" />
+    <Compile Include="NotifyPropertyChangedBase.cs" />
+    <Compile Include="OrderedDictionary.cs" />
+    <Compile Include="Packages\CompressionHelper.cs" />
+    <Compile Include="Packages\ExportEntry.cs" />
+    <Compile Include="Packages\IEntry.cs" />
+    <Compile Include="Packages\IMEPackage.cs" />
+    <Compile Include="Packages\ImportEntry.cs" />
+    <Compile Include="Packages\MEPackage.cs" />
+    <Compile Include="Packages\MEPackageHandler.cs" />
+    <Compile Include="Packages\PackageExtensions.cs" />
+    <Compile Include="Packages\UDKPackage.cs" />
+    <Compile Include="Packages\UnrealPackageFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedUI\ObservableCollectionExtended.cs" />
+    <Compile Include="Unreal\BinaryConverters\EntryPruner.cs" />
+    <Compile Include="Unreal\BinaryConverters\ExportBinaryConverter.cs" />
+    <Compile Include="Unreal\BinaryConverters\ImportExtensions.cs" />
+    <Compile Include="Unreal\BinaryConverters\Level.cs" />
+    <Compile Include="Unreal\BinaryConverters\Material.cs" />
+    <Compile Include="Unreal\BinaryConverters\Model.cs" />
+    <Compile Include="Unreal\BinaryConverters\Polys.cs" />
+    <Compile Include="Unreal\BinaryConverters\SkeletalMesh.cs" />
+    <Compile Include="Unreal\BinaryConverters\StaticMesh.cs" />
+    <Compile Include="Unreal\BinaryConverters\StaticMeshComponent.cs" />
+    <Compile Include="Unreal\BinaryConverters\TreeNode.cs" />
+    <Compile Include="Unreal\BinaryConverters\UnrealStructs.cs" />
+    <Compile Include="Unreal\BinaryConverters\World.cs" />
+    <Compile Include="Unreal\BitConverter.cs" />
+    <Compile Include="Unreal\Bytecode.cs" />
+    <Compile Include="Unreal\Classes\Texture2D.cs" />
+    <Compile Include="Unreal\CommonStructs.cs" />
+    <Compile Include="Unreal\DLCPackage.cs" />
+    <Compile Include="Unreal\DLCUnpacker.cs" />
+    <Compile Include="Unreal\HuffmanCompression.cs" />
+    <Compile Include="Unreal\ME3UnrealObjectInfo.cs" />
+    <Compile Include="Unreal\PropertyCollection.cs" />
+    <Compile Include="Unreal\PropertyReader.cs" />
+    <Compile Include="Unreal\SerializingContainer.cs" />
+    <Compile Include="Unreal\SerializingContainer2.cs" />
+    <Compile Include="Unreal\TalkFile.cs" />
+    <Compile Include="Unreal\TextureCompression.cs" />
+    <Compile Include="Unreal\TOCBinFile.cs" />
+    <Compile Include="Unreal\UDKUnrealObjectInfo.cs" />
+    <Compile Include="Unreal\UnrealFlags.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ObjectInfo\objectinfo.zip" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Gammtek.Conduit.Core\Gammtek.Conduit.Core.csproj">
+      <Project>{9F364D6B-5046-4186-B684-968B52AFCB81}</Project>
+      <Name>Gammtek.Conduit.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gibbed.IO\Gibbed.IO.csproj">
+      <Project>{047857BA-DAA3-4CA7-AFB8-A1B082B28C6A}</Project>
+      <Name>Gibbed.IO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helpers\Helpers.csproj">
+      <Project>{CCF590B8-E6BF-4D31-85BF-AFEA7D075EDF}</Project>
+      <Name>Helpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
