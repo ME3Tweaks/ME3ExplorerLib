@@ -42,7 +42,7 @@ namespace ME3Explorer
             LoadGamePath();
         }
 
-        private static void LoadGamePath(string gamepath = null)
+        public static void LoadGamePath(string gamepath = null)
         {
             if (!string.IsNullOrEmpty(gamepath))
             {

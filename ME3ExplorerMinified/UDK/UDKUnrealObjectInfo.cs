@@ -19,25 +19,25 @@ namespace ME3Explorer.Unreal
             "Quat", "Matrix", "IntPoint", "ActorReference", "ActorReference", "ActorReference", "PolyReference", "AimTransform", "AimTransform", "AimOffsetProfile", "FontCharacter",
             "CoverReference", "CoverInfo", "CoverSlot", "RwVector2", "RwVector3", "RwVector4" };
 
-        private static readonly string jsonPath = Path.Combine(App.ExecFolder, "UDKObjectInfo.json");
+
+        private static bool loaded;
 
         public static void loadfromJSON()
         {
-            try
+            if (!loaded)
             {
-                if (File.Exists(jsonPath))
+                try
                 {
-                    string raw = File.ReadAllText(jsonPath);
-                    var blob = JsonConvert.DeserializeAnonymousType(raw, new { Classes, Structs, Enums });
+                    var blob = JsonConvert.DeserializeAnonymousType(ME3UnrealObjectInfo.LoadEmbeddedJSONText(MEGame.ME3), new { Classes, Structs, Enums });
                     Classes = blob.Classes;
                     Structs = blob.Structs;
                     Enums = blob.Enums;
-                    IsLoaded = true;
+                    loaded = true;
+
                 }
-            }
-            catch (Exception)
-            {
-                return;
+                catch (Exception e)
+                {
+                }
             }
         }
 
@@ -141,11 +141,6 @@ namespace ME3Explorer.Unreal
             }
             else
             {
-#if DEBUG
-                ArrayTypeLookupJustFailed = true;
-#endif
-                Debug.WriteLine("UDK Array type lookup failed due to no info provided, defaulting to int");
-                if (ME3Explorer.Properties.Settings.Default.PropertyParsingME3UnknownArrayAsObject) return ArrayType.Object;
                 return ArrayType.Int;
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using SharpDX;
 using Guid = System.Guid;
 
 namespace ME3Explorer.Unreal.BinaryConverters

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using ME3Explorer.Packages;
 using System.Diagnostics;
+using ME3Explorer.Pathfinding_Editor;
+using ME3ExplorerMinified;
 
 namespace ME3Explorer.Unreal
 {

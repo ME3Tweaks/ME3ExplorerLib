@@ -165,7 +165,7 @@ namespace ME3Explorer.Unreal
 
         public static List<Property> getPropList(ExportEntry export)
         {
-            Application.DoEvents();
+            //Application.DoEvents();
             byte[] data = export.Data;
             int start = detectStart(export.FileRef, data, export.ObjectFlags);
             return ReadProp(export.FileRef, data, start);

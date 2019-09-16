@@ -117,35 +117,6 @@ namespace ME3Explorer
             return OfficialDLC(game).Any(dlcFolder => path.StartsWith(Path.Combine(dlcPath, dlcFolder)));
         }
 
-        public static void SaveSettings(List<string> BIOGames)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(BIOGames[0]))
-                {
-                    Properties.Settings.Default.ME1Directory = BIOGames[0];
-                    ME1Directory.gamePath = BIOGames[0];
-                }
-
-                if (!string.IsNullOrEmpty(BIOGames[1]))
-                {
-                    Properties.Settings.Default.ME2Directory = BIOGames[1];
-                    ME2Directory.gamePath = BIOGames[1];
-                }
-
-                if (!string.IsNullOrEmpty(BIOGames[2]))
-                {
-                    Properties.Settings.Default.ME3Directory = BIOGames[2];
-                    ME3Directory.gamePath = BIOGames[2];
-                }
-
-                Properties.Settings.Default.Save();
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine($"Error saving pathing: {e.Message}");
-            }
-        }
 
         public static List<string> EnumerateGameFiles(MEGame GameVersion, string searchPath, bool recurse = true, Predicate<string> predicate = null)
         {

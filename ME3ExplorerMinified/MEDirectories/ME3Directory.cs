@@ -31,7 +31,7 @@ namespace ME3Explorer
         public static string BIOGamePath => gamePath != null ? gamePath.Contains("biogame", StringComparison.OrdinalIgnoreCase) ? gamePath : Path.Combine(gamePath, @"BIOGame\") : null;
         public static string tocFile => gamePath != null ? Path.Combine(gamePath, @"BIOGame\PCConsoleTOC.bin") : null;
         public static string cookedPath => gamePath != null ? Path.Combine(gamePath, @"BIOGame\CookedPCConsole\") : "Not Found";
-        public static string DLCPath => gamePath != null ? Path.Combine(gamePath , @"BIOGame\DLC\") : "Not Found";
+        public static string DLCPath => gamePath != null ? Path.Combine(gamePath, @"BIOGame\DLC\") : "Not Found";
 
         public static string ExecutablePath => gamePath != null ? Path.Combine(gamePath, @"Binaries\Win32\MassEffect3.exe") : null;
 
@@ -44,7 +44,7 @@ namespace ME3Explorer
             LoadGamePath();
         }
 
-        private static void LoadGamePath(string gamepath = null)
+        public static void LoadGamePath(string gamepath = null)
         {
             if (!string.IsNullOrEmpty(gamepath))
             {
@@ -91,7 +91,8 @@ namespace ME3Explorer
             ["DLC_CON_MP5"] = "Reckoning",
             ["DLC_EXP_Pack003_Base"] = "Citadel - Part I",
             ["DLC_EXP_Pack003"] = "Citadel - Part II",
-            ["DLC_CON_DH1"] = "Genesis 2"
+            ["DLC_CON_DH1"] = "Genesis 2",
+            ["DLC_TestPatch"] = "TestPatch"
         };
 
         public static List<string> OfficialDLC = new List<string>

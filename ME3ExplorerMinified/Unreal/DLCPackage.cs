@@ -39,6 +39,13 @@ namespace ME3Explorer.Unreal
                     throw new Exception("Not supported DLC file!");
             }
         }
+
+        public static string GetPrettyDLCNameFromPath(string sfarPath)
+        {
+            var path = Path.GetFileName(Directory.GetParent(Directory.GetParent(sfarPath).FullName).FullName);
+            return ME3Directory.OfficialDLCNames[path];
+        }
+
         public struct FileEntryStruct
         {
             public HeaderStruct Header;

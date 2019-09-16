@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ME1Explorer.Unreal;
 using ME2Explorer.Unreal;
 using ME3Explorer;
+using ME3Explorer.Packages;
 using ME3Explorer.Unreal;
 
 namespace ME3ExplorerMinified
@@ -27,7 +28,11 @@ namespace ME3ExplorerMinified
                 ME1UnrealObjectInfo.loadfromJSON();
                 ME2UnrealObjectInfo.loadfromJSON();
                 ME3UnrealObjectInfo.loadfromJSON();
+                UDKUnrealObjectInfo.loadfromJSON();
                 ME1Directory.LoadGamePath();
+                ME2Directory.LoadGamePath();
+                ME3Directory.LoadGamePath();
+                MEPackageHandler.Initialize();
                 booted = true;
             }
         }

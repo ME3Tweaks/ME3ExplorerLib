@@ -29,13 +29,13 @@ namespace ME3Explorer.Unreal
             ReadFile();
         }
 
+        //for SFARs
         public void ReadFile()
         {
             Memory.Seek(0, 0);
             uint magic = (uint)ReadInt(Memory);
             if (magic != 0x3AB70C13)
             {
-                MessageBox.Show("Not a SFAR File.");
                 return;
             }
             Memory.Seek(8, 0);
