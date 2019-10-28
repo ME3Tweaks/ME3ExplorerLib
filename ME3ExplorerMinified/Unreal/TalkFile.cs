@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ME1Explorer;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -8,7 +9,7 @@ using System.Xml;
 
 namespace ME3Explorer
 {
-    public class TalkFile
+    public class TalkFile : ITalkFile
     {
         public struct TLKHeader
         {
@@ -183,6 +184,25 @@ namespace ME3Explorer
                 StringRefs.Add(sref);
             }
             r.Close();
+        }
+
+        public bool Modified { get; set; }
+
+        public bool replaceString(int id, string newString)
+        {
+            for (int i = 0; i < StringRefs.Count; i++)
+            {
+                if (StringRefs[i].StringID == id)
+                {
+                    //Debug.WriteLine("Setting string " + id + " to " + newString);
+                    StringRefs[i].Data = newString;
+                    StringRefs[i].Flags = newString == null ? 0 : 1; //should port to me3explorer.
+                    Modified = true;
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public string findDataById(int strRefID, bool withFileName = false)
