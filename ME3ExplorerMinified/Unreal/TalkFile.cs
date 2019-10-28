@@ -50,6 +50,7 @@ namespace ME3Explorer
         //    }
         //}
 
+
         public struct HuffmanNode
         {
             public int LeftNodeID;

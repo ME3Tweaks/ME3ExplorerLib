@@ -14,7 +14,7 @@ namespace ME3ExplorerMinified
     public static class DLL
     {
         public static string BugReportURL = "https://github.com/ME3Tweaks/ME3ExplorerMinified";
-        private static bool booted = false;
+        public static bool Booted { get; private set; }
 #if DEBUG
         public static bool IsDebug => true;
 #else
@@ -23,7 +23,7 @@ namespace ME3ExplorerMinified
 
         public static void Startup()
         {
-            if (!booted)
+            if (!Booted)
             {
                 ME1UnrealObjectInfo.loadfromJSON();
                 ME2UnrealObjectInfo.loadfromJSON();
@@ -33,7 +33,7 @@ namespace ME3ExplorerMinified
                 ME2Directory.LoadGamePath();
                 ME3Directory.LoadGamePath();
                 MEPackageHandler.Initialize();
-                booted = true;
+                Booted = true;
             }
         }
     }

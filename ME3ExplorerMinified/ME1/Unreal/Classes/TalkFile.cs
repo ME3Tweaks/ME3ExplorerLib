@@ -6,6 +6,7 @@ using System.Text;
 using System.Xml;
 using ME3Explorer.Packages;
 using System.Diagnostics;
+using Gammtek.Conduit.Extensions;
 
 namespace ME1Explorer.Unreal.Classes
 {
@@ -141,7 +142,7 @@ namespace ME1Explorer.Unreal.Classes
             tlkSetIndex = -1;
             LoadTlkData();
         }
-        
+
         public TalkFile(IMEPackage _pcc, int uindex, bool _male, int _langRef, int _tlkSetIndex)
         {
             pcc = _pcc;
@@ -155,6 +156,24 @@ namespace ME1Explorer.Unreal.Classes
         #endregion
 
         //ITalkFile
+
+        public bool replaceString(int id, string newString)
+        {
+            for (int i = 0; i < StringRefs.Length; i++)
+            {
+                if (StringRefs[i].StringID == id)
+                {
+                    //Debug.WriteLine("Setting string " + id + " to " + newString);
+                    StringRefs[i].Data = newString;
+                    StringRefs[i].Flags = newString == null ? 0 : 1; //should port to me3explorer.
+                    Modified = true;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public string findDataById(int strRefID, bool withFileName = false)
         {
             string data = "No Data";
@@ -172,6 +191,8 @@ namespace ME1Explorer.Unreal.Classes
             }
             return data;
         }
+
+        public bool Modified { get; set; }
 
         #region IEquatable
         public bool Equals(TalkFile other)

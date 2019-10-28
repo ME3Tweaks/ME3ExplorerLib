@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using ME3Explorer.Packages;
 
@@ -94,5 +95,26 @@ namespace ME1Explorer.Unreal.Classes
                 return "No Data";
             }
         }
+
+        public bool replaceString(int id, string newString)
+        {
+            if (talkFiles != null && talkFiles.Count > selectedTLK)
+            {
+                ME1Explorer.Unreal.Classes.TalkFile tf = talkFiles[selectedTLK];
+                for (int i = 0; i < tf.StringRefs.Length; i++)
+                {
+                    if (tf.StringRefs[i].StringID == id)
+                    {
+                        tf.StringRefs[i].Data = newString;
+                        tf.StringRefs[i].Flags = newString == null ? 0 : 1; //should port to me3explorer.
+                        Modified = true;
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool Modified { get; set; }
     }
 }

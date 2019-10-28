@@ -8,6 +8,9 @@ namespace ME1Explorer
 {
     public interface ITalkFile
     {
+        bool Modified { get; set; }
+        bool replaceString(int id, string newString);
+
         string findDataById(int strRefID, bool withFileName = false);
     }
 }
