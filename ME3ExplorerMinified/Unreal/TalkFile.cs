@@ -205,6 +205,14 @@ namespace ME3Explorer
             return false;
         }
 
+        public bool SaveToFile(string path)
+        {
+            HuffmanCompression hc = new HuffmanCompression();
+            hc.LoadInputData(StringRefs);
+            hc.SaveToTlkFile(path);
+            return true;
+        }
+
         public string findDataById(int strRefID, bool withFileName = false)
         {
             string data = "No Data";

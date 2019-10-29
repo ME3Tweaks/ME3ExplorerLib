@@ -9,7 +9,7 @@ using static ME1Explorer.Unreal.Classes.TalkFile;
 
 namespace ME3Explorer
 {
-    class HuffmanCompression
+    public class HuffmanCompression
     {
         private Version _inputFileVersion = null;
         private List<TLKStringRef> _inputData = new List<TLKStringRef>();
