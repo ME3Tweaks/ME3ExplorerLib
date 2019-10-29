@@ -360,7 +360,7 @@ namespace ME3Explorer.Unreal
                 var resources = assembly.GetManifestResourceNames();
                 //debug
 
-                var stream = assembly.GetManifestResourceStream("ME3ExplorerMinified.ObjectInfo.objectinfo.zip");
+                var stream = assembly.GetManifestResourceStream("ME3ExplorerLib.ObjectInfo.objectinfo.zip");
                 if (stream != null)
                 {
                     using (ZipArchive archive = new ZipArchive(stream, ZipArchiveMode.Read))
