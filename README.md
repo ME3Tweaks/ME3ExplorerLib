@@ -13,7 +13,7 @@ to force the package information databases to load.
 
 ## Packages
 
-To open a package file, use MEPackageHandler. Do this at least once from a single-thread to ensure you don't have race condition initializing package function initialization.
+To open a package file, use MEPackageHandler. Do this at least once from a single-thread to ensure you don't have race condition initializing package function delegate. This will be fixed in a future version of the library.
 
 ```
 var package = MEPackageHandler.OpenMEPackage("YourFile.pcc");
@@ -91,7 +91,7 @@ var tf = new TalkFile(export);
 Modify strings
 ```
 using System.linq;
-<tf variable is existing TalkFile export>
+<tf variable is existing TalkFile object>
 var strref = tf.StringRefs.FirstOrDefault(x=>x.StringID == 301204);
 if (strref != null) {
     strref.Data = "My new string";
@@ -101,10 +101,42 @@ if (strref != null) {
 Save back to export
 ```
 <export variable is variable of TLK export>
-<tf variable is existing TalkFile export>
+<tf variable is existing TalkFile object>
 ME1Explorer.HuffmanCompression hc = new ME1Explorer.HuffmanCompression();
 hc.LoadInputData(tf.StringRefs);
 hc.serializeTalkfileToExport(export, [bool savepackage]); // you can save package here if you choose.
+```
+
+### ME2/ME3
+Use ME3Explorer.Unreal.Classes.TalkFile to load a TalkFile. Use ME3Explorer.HuffmanCompression to reserialize back to a file.
+
+Load TLK
+```
+using ME3Explorer;
+
+TalkFile tf = new TalkFile();
+tf.LoadTlkData("PathToYourTLK.tlk");
+//Access string refs through 
+
+```
+
+Modify strings
+```
+///ME2/ME3 TLK also uses ME1Explorer.Unreal.Classes.TalkFile.TLKStringRef objects.
+using System.linq;
+<tf variable is existing TalkFile object>
+var strref = tf.StringRefs.FirstOrDefault(x=>x.StringID == 301204);
+if (strref != null) {
+    strref.Data = "My new string";
+}
+```
+
+Save back to file
+```
+<tf variable is existing TalkFile object>
+ME3Explorer.HuffmanCompression hc = new ME3Explorer.HuffmanCompression();
+hc.LoadInputData(tf.StringRefs);
+hc.SaveToTlkFile("PathToYourTLK.tlk"); // you can save package here if you choose.
 ```
 
 
