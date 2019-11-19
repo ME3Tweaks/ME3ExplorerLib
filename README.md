@@ -11,6 +11,8 @@ ME3ExplorerMinified.DLL.Startup();
 ```
 to force the package information databases to load.
 
+## Packages
+
 To open a package file, use MEPackageHandler. Do this at least once from a single-thread to ensure you don't have race condition initializing package function initialization.
 
 ```
