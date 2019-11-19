@@ -136,7 +136,7 @@ Save back to file
 <tf variable is existing TalkFile object>
 ME3Explorer.HuffmanCompression hc = new ME3Explorer.HuffmanCompression();
 hc.LoadInputData(tf.StringRefs);
-hc.SaveToTlkFile("PathToYourTLK.tlk"); // you can save package here if you choose.
+hc.SaveToTlkFile("PathToYourTLK.tlk");
 ```
 
 
