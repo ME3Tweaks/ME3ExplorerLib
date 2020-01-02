@@ -37,7 +37,7 @@ Get an entry (export or import):
 package.getEntry(15);
 ```
 
-### Export Properites
+### Export Properties
 When fetching properties, setting the value on the returned property and then writing the collection back will work as it writes back the referenced items.
 
 Get all properties for an export and write them back:
