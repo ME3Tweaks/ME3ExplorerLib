@@ -1,6 +1,8 @@
 # ME3ExplorerLib
 Library version of most of the backend for ME3Explorer for use as a dynamic link library
 
+This repository is outdated as ME3Explorer's codebase has been split to UI + Library in the main ME3Tweaks Fork repository. This repository will not be updated further.
+
 Current version is based on ME3Explorer 4.0 codebase. While not the latest, it has most features that that toolset does (most of the toolset work is done in te front end now).
 
 Most calls are done through same way as ME3Explorer code.
